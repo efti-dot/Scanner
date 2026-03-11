@@ -6,3 +6,14 @@ load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 if not api_key:
     st.error("Please check the OPENAI_API_KEY.")
+
+def scanner():
+    st.title("Scanner")
+    st.write("Image Scanner")
+
+    uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
+    if uploaded_file is not None:
+        st.image(uploaded_file, caption='Uploaded Image', use_column_width=True)
+        st.write("Processing the image...")
+    else:
+        st.write("Please upload an image to scan.")
