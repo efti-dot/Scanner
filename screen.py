@@ -9,7 +9,6 @@ if not api_key:
 
 def scanner():
     st.title("Scanner")
-    st.write("Image Scanner")
 
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
     if uploaded_file is not None:
@@ -17,3 +16,7 @@ def scanner():
         st.write("Processing the image...")
     else:
         st.write("Please upload an image to scan.")
+
+    
+if __name__ == "__main__":
+    scanner()
