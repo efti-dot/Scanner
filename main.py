@@ -10,3 +10,7 @@ def process_image(img):
     print("Processing the image...")
     ext = Path(img.name).suffix.lower()
     file_bytes = img.read()
+
+    if ext in ['.jpg', '.jpeg', '.png']:
+        print(f"Image format: {ext}")
+        
