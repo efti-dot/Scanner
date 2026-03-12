@@ -7,6 +7,8 @@ from openai import OpenAI
 
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=api_key)
+
 
 def process_image(img):
     print("Processing the image...")
@@ -16,4 +18,19 @@ def process_image(img):
     if ext in ['.jpg', '.jpeg', '.png']:
         print(f"Image format: {ext}")
         response = client.chat.completions.create(
-            model="gpt-4.1-mini")
+            model="gpt-4.1-mini",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are an AI that extracts product details from images."
+                },
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": "Extract product details: title, color, size, brand, description."},
+                        {"type": "image", "image_data": file_bytes}
+                    ]
+                }
+            ],
+            max_tokens=300
+        )
