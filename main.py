@@ -24,6 +24,7 @@ def process_image(img):
                     "content": (
                         "You are an AI that extracts product details from images. "
                         "Always return valid JSON with keys: title, color, size, brand, description, quantity. "
+                        "The 'color_codes' must be a list of hex codes (e.g., ['#FF0000', '#000000']). "
                         "The 'quantity' must be a number only (e.g., 1, 2, 3)."
                     )
                 },
